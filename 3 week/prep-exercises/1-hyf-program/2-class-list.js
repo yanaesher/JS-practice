@@ -2,7 +2,7 @@ import { modules, students, mentors, classes } from "./hyf.js";
 
 const getPeopleOfClass = (className) => {
   const classData = classes.find(classItem => classItem.name === className);
-  let users = [...mentors,...students].filter(user => user.class === className || user.nowTeaching === classData.currentModule)
+  const users = [...mentors,...students].filter(user => user.class === className || user.nowTeaching === classData.currentModule)
   .map(user => ({
 name: user.name,
 role: user.canTeach? 'mentor' : 'student'
