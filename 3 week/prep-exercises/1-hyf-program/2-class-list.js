@@ -13,7 +13,7 @@ return users;
  console.log(getPeopleOfClass('class34'));
 
 const getActiveClasses = () => {
-let classActiveObj = classes.filter(classItem => classItem.active)
+const classActiveObj = classes.filter(classItem => classItem.active)
 .reduce((obj, item) => {
 obj[item.name] = getPeopleOfClass(item.name);
 return obj;
