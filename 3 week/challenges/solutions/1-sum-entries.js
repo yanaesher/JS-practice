@@ -10,5 +10,8 @@ list.forEach((item, idx) => {
     }
 });
 
+
+
+
 // TEST CODE, do not change
 console.assert(result === 514579, `The result is not correct, it is ${result}, but should be 514579`);

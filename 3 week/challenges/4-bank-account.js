@@ -9,29 +9,45 @@
  * TIP: a lot of the things the functions do are the same, you may want to create one or more other functions to not duplicate code
  */
 
+
+
+// so functions needs to create obj and add it to transactions array
+
+
+
 const bankAccount = {
-  // The currentBalance is how much money you have in your bankAccount.
   currentBalance: 250,
-  // The transactions are a list of changes so that you can keep track.
   transactions: [
-    /**
-     * The prevAmount is what your balance was before the transaction,
-     * the newAmount is what your balance was after the transaction
-     * and the reason is what the transaction was about
-     */
-    {
-      prevAmount: 350,
-      newAmount: 250,
-      reason: "Donation",
-    },
+ {prevAmount: 350, newAmount: 250, reason: "Donation"},
   ],
 };
 
-const donateMoney = (amount, onSuccess, onFail) => {
-  // TODO complete this function
+
+
+const makeTransaction = (amount, onFail, onSuccess, reason) => {
+	
+if(amount>bankAccount.currentBalance){
+	onFail();
+	return;
+  }
+  const transaction = {
+  prevAmount: bankAccount.currentBalance,
+  newAmount: bankAccount.currentBalance - amount,
+  reason: reason,
+  };
+  
+  bankAccount.currentBalance -= amount;
+  bankAccount.transactions.push(transaction);
+  onSuccess();
+}
+
+
+const donateMoney = (amount, onSuccess, onFail) => { 
+makeTransaction(amount, onFail, onSuccess, 'Donation');
 };
+
 const payRent = (amount, onSuccess, onFail) => {
-  // TODO complete this function
+	makeTransaction(amount, onFail, onSuccess, 'Rent');
 };
 
 /**

@@ -21,3 +21,11 @@ const passwordList = [
     { times: '1-3', letter: 'b', password: 'cdefg'},
     { times: '2-9', letter: 'c', password: 'ccccccccc'}
 ];
+
+passwordList.forEach(item => {
+const {times,letter,password} = item;
+const [min, max] = times.split('-').map(number => +number);
+const countLetters = password.split('').filter(char => char === letter).length;
+const status = countLetters>=min && countLetters <=max? 'VALID' : 'INVALID';
+console.log(`${password} is ${status}, ${letter} is present ${countLetters} times and should have been present at least ${min} and at most ${max} times`);
+});
